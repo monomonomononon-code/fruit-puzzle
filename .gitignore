@@ -1,0 +1,25 @@
+# 依存関係・ビルド生成物
+node_modules/
+dist/
+coverage/
+
+# ブラウザテストの画像・レポート・一時ファイル
+test-results/
+playwright-report/
+blob-report/
+*.log
+*.tmp
+*.temp
+
+# ローカル設定・認証情報
+.env
+.env.*
+!.env.example
+.codex/
+.vscode/
+.idea/
+
+# OSが作成するファイル
+.DS_Store
+Thumbs.db
+Desktop.ini
