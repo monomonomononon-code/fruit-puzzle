@@ -1,0 +1,840 @@
+{
+  "method": "200 seeds; no initial matches; no valid-move conditioning; six normal fruits; shape and initial covers separately",
+  "results": [
+    {
+      "id": 1,
+      "name": "はじまりの果樹園",
+      "shape": "小さな長方形",
+      "open": {
+        "cells": 40,
+        "edges": 67,
+        "potential": 67,
+        "threeHorizontal": 30,
+        "threeVertical": 24,
+        "squares": 28,
+        "bothDirections": 40,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          40
+        ],
+        "articulations": 0,
+        "meanMoves": 8.025,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 40,
+        "edges": 67,
+        "potential": 67,
+        "threeHorizontal": 30,
+        "threeVertical": 24,
+        "squares": 28,
+        "bothDirections": 40,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          40
+        ],
+        "articulations": 0,
+        "meanMoves": 8.025,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 2,
+      "name": "レモンの小道",
+      "shape": "欠けた角",
+      "open": {
+        "cells": 36,
+        "edges": 59,
+        "potential": 59,
+        "threeHorizontal": 26,
+        "threeVertical": 20,
+        "squares": 24,
+        "bothDirections": 36,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          36
+        ],
+        "articulations": 0,
+        "meanMoves": 7.07,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 36,
+        "edges": 59,
+        "potential": 59,
+        "threeHorizontal": 26,
+        "threeVertical": 20,
+        "squares": 24,
+        "bothDirections": 36,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          36
+        ],
+        "articulations": 0,
+        "meanMoves": 7.07,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 3,
+      "name": "ふた色の収穫",
+      "shape": "ひし形",
+      "open": {
+        "cells": 30,
+        "edges": 46,
+        "potential": 46,
+        "threeHorizontal": 18,
+        "threeVertical": 15,
+        "squares": 17,
+        "bothDirections": 25,
+        "narrow": 5,
+        "oneWide": 1,
+        "components": [
+          30
+        ],
+        "articulations": 1,
+        "meanMoves": 4.91,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 30,
+        "edges": 46,
+        "potential": 46,
+        "threeHorizontal": 18,
+        "threeVertical": 15,
+        "squares": 17,
+        "bothDirections": 25,
+        "narrow": 5,
+        "oneWide": 1,
+        "components": [
+          30
+        ],
+        "articulations": 1,
+        "meanMoves": 4.91,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 4,
+      "name": "朝霜の庭",
+      "shape": "穴あき",
+      "open": {
+        "cells": 48,
+        "edges": 76,
+        "potential": 76,
+        "threeHorizontal": 32,
+        "threeVertical": 24,
+        "squares": 28,
+        "bothDirections": 36,
+        "narrow": 12,
+        "oneWide": 0,
+        "components": [
+          48
+        ],
+        "articulations": 0,
+        "meanMoves": 7.35,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 44,
+        "edges": 60,
+        "potential": 60,
+        "threeHorizontal": 20,
+        "threeVertical": 16,
+        "squares": 16,
+        "bothDirections": 16,
+        "narrow": 28,
+        "oneWide": 4,
+        "components": [
+          44
+        ],
+        "articulations": 0,
+        "meanMoves": 3.79,
+        "zeroSamples": 8,
+        "samples": 200
+      }
+    },
+    {
+      "id": 5,
+      "name": "ひんやり果実",
+      "shape": "橋と分断",
+      "open": {
+        "cells": 45,
+        "edges": 72,
+        "potential": 72,
+        "threeHorizontal": 27,
+        "threeVertical": 27,
+        "squares": 28,
+        "bothDirections": 45,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          45
+        ],
+        "articulations": 0,
+        "meanMoves": 7.28,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 41,
+        "edges": 56,
+        "potential": 56,
+        "threeHorizontal": 19,
+        "threeVertical": 17,
+        "squares": 12,
+        "bothDirections": 27,
+        "narrow": 14,
+        "oneWide": 6,
+        "components": [
+          41
+        ],
+        "articulations": 0,
+        "meanMoves": 3.68,
+        "zeroSamples": 5,
+        "samples": 200
+      }
+    },
+    {
+      "id": 6,
+      "name": "届いた木箱",
+      "shape": "十字の小道",
+      "open": {
+        "cells": 51,
+        "edges": 79,
+        "potential": 79,
+        "threeHorizontal": 37,
+        "threeVertical": 20,
+        "squares": 28,
+        "bothDirections": 36,
+        "narrow": 15,
+        "oneWide": 1,
+        "components": [
+          51
+        ],
+        "articulations": 0,
+        "meanMoves": 7.78,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 47,
+        "edges": 63,
+        "potential": 63,
+        "threeHorizontal": 26,
+        "threeVertical": 14,
+        "squares": 15,
+        "bothDirections": 22,
+        "narrow": 25,
+        "oneWide": 8,
+        "components": [
+          47
+        ],
+        "articulations": 7,
+        "meanMoves": 4.19,
+        "zeroSamples": 1,
+        "samples": 200
+      }
+    },
+    {
+      "id": 7,
+      "name": "収穫の便り",
+      "shape": "段差",
+      "open": {
+        "cells": 43,
+        "edges": 68,
+        "potential": 68,
+        "threeHorizontal": 29,
+        "threeVertical": 22,
+        "squares": 25,
+        "bothDirections": 34,
+        "narrow": 9,
+        "oneWide": 1,
+        "components": [
+          43
+        ],
+        "articulations": 0,
+        "meanMoves": 7.075,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 39,
+        "edges": 52,
+        "potential": 52,
+        "threeHorizontal": 21,
+        "threeVertical": 12,
+        "squares": 11,
+        "bothDirections": 16,
+        "narrow": 23,
+        "oneWide": 7,
+        "components": [
+          39
+        ],
+        "articulations": 3,
+        "meanMoves": 3.545,
+        "zeroSamples": 11,
+        "samples": 200
+      }
+    },
+    {
+      "id": 8,
+      "name": "石畳の果樹園",
+      "shape": "外周の回廊",
+      "open": {
+        "cells": 53,
+        "edges": 83,
+        "potential": 83,
+        "threeHorizontal": 35,
+        "threeVertical": 25,
+        "squares": 30,
+        "bothDirections": 35,
+        "narrow": 18,
+        "oneWide": 0,
+        "components": [
+          53
+        ],
+        "articulations": 0,
+        "meanMoves": 8.225,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 53,
+        "edges": 83,
+        "potential": 83,
+        "threeHorizontal": 35,
+        "threeVertical": 25,
+        "squares": 30,
+        "bothDirections": 35,
+        "narrow": 18,
+        "oneWide": 0,
+        "components": [
+          53
+        ],
+        "articulations": 0,
+        "meanMoves": 8.225,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 9,
+      "name": "こもれびの迷路",
+      "shape": "非対称",
+      "open": {
+        "cells": 38,
+        "edges": 59,
+        "potential": 59,
+        "threeHorizontal": 24,
+        "threeVertical": 18,
+        "squares": 21,
+        "bothDirections": 34,
+        "narrow": 4,
+        "oneWide": 0,
+        "components": [
+          38
+        ],
+        "articulations": 0,
+        "meanMoves": 5.515,
+        "zeroSamples": 2,
+        "samples": 200
+      },
+      "start": {
+        "cells": 35,
+        "edges": 48,
+        "potential": 48,
+        "threeHorizontal": 16,
+        "threeVertical": 13,
+        "squares": 12,
+        "bothDirections": 19,
+        "narrow": 16,
+        "oneWide": 3,
+        "components": [
+          35
+        ],
+        "articulations": 1,
+        "meanMoves": 3.19,
+        "zeroSamples": 9,
+        "samples": 200
+      }
+    },
+    {
+      "id": 10,
+      "name": "実りの祝祭",
+      "shape": "祝祭の額縁",
+      "open": {
+        "cells": 74,
+        "edges": 117,
+        "potential": 117,
+        "threeHorizontal": 46,
+        "threeVertical": 40,
+        "squares": 42,
+        "bothDirections": 52,
+        "narrow": 22,
+        "oneWide": 0,
+        "components": [
+          74
+        ],
+        "articulations": 0,
+        "meanMoves": 10.985,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 66,
+        "edges": 93,
+        "potential": 93,
+        "threeHorizontal": 30,
+        "threeVertical": 32,
+        "squares": 27,
+        "bothDirections": 37,
+        "narrow": 29,
+        "oneWide": 8,
+        "components": [
+          66
+        ],
+        "articulations": 0,
+        "meanMoves": 7.345,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 11,
+      "name": "飛び石の庭",
+      "shape": "飛び石",
+      "open": {
+        "cells": 44,
+        "edges": 67,
+        "potential": 67,
+        "threeHorizontal": 28,
+        "threeVertical": 18,
+        "squares": 22,
+        "bothDirections": 30,
+        "narrow": 14,
+        "oneWide": 0,
+        "components": [
+          44
+        ],
+        "articulations": 0,
+        "meanMoves": 6.165,
+        "zeroSamples": 3,
+        "samples": 200
+      },
+      "start": {
+        "cells": 40,
+        "edges": 51,
+        "potential": 51,
+        "threeHorizontal": 16,
+        "threeVertical": 10,
+        "squares": 11,
+        "bothDirections": 11,
+        "narrow": 29,
+        "oneWide": 4,
+        "components": [
+          40
+        ],
+        "articulations": 0,
+        "meanMoves": 2.58,
+        "zeroSamples": 21,
+        "samples": 200
+      }
+    },
+    {
+      "id": 12,
+      "name": "ふたつの果樹園",
+      "shape": "左右分断",
+      "open": {
+        "cells": 48,
+        "edges": 76,
+        "potential": 76,
+        "threeHorizontal": 24,
+        "threeVertical": 32,
+        "squares": 30,
+        "bothDirections": 48,
+        "narrow": 0,
+        "oneWide": 0,
+        "components": [
+          24,
+          24
+        ],
+        "articulations": 0,
+        "meanMoves": 8.08,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 44,
+        "edges": 60,
+        "potential": 60,
+        "threeHorizontal": 16,
+        "threeVertical": 24,
+        "squares": 14,
+        "bothDirections": 24,
+        "narrow": 20,
+        "oneWide": 8,
+        "components": [
+          22,
+          22
+        ],
+        "articulations": 0,
+        "meanMoves": 4.235,
+        "zeroSamples": 4,
+        "samples": 200
+      }
+    },
+    {
+      "id": 13,
+      "name": "くびれた小道",
+      "shape": "細道",
+      "open": {
+        "cells": 43,
+        "edges": 63,
+        "potential": 63,
+        "threeHorizontal": 29,
+        "threeVertical": 16,
+        "squares": 20,
+        "bothDirections": 26,
+        "narrow": 17,
+        "oneWide": 5,
+        "components": [
+          43
+        ],
+        "articulations": 4,
+        "meanMoves": 5.75,
+        "zeroSamples": 1,
+        "samples": 200
+      },
+      "start": {
+        "cells": 35,
+        "edges": 44,
+        "potential": 42,
+        "threeHorizontal": 18,
+        "threeVertical": 11,
+        "squares": 10,
+        "bothDirections": 16,
+        "narrow": 19,
+        "oneWide": 11,
+        "components": [
+          35
+        ],
+        "articulations": 15,
+        "meanMoves": 2.995,
+        "zeroSamples": 22,
+        "samples": 200
+      }
+    },
+    {
+      "id": 14,
+      "name": "まあるい回廊",
+      "shape": "リング",
+      "open": {
+        "cells": 48,
+        "edges": 72,
+        "potential": 72,
+        "threeHorizontal": 28,
+        "threeVertical": 20,
+        "squares": 24,
+        "bothDirections": 16,
+        "narrow": 32,
+        "oneWide": 0,
+        "components": [
+          48
+        ],
+        "articulations": 0,
+        "meanMoves": 5.93,
+        "zeroSamples": 3,
+        "samples": 200
+      },
+      "start": {
+        "cells": 44,
+        "edges": 60,
+        "potential": 60,
+        "threeHorizontal": 22,
+        "threeVertical": 14,
+        "squares": 16,
+        "bothDirections": 12,
+        "narrow": 32,
+        "oneWide": 4,
+        "components": [
+          44
+        ],
+        "articulations": 0,
+        "meanMoves": 3.86,
+        "zeroSamples": 13,
+        "samples": 200
+      }
+    },
+    {
+      "id": 15,
+      "name": "かたよる木陰",
+      "shape": "非対称の庭",
+      "open": {
+        "cells": 44,
+        "edges": 67,
+        "potential": 67,
+        "threeHorizontal": 26,
+        "threeVertical": 23,
+        "squares": 22,
+        "bothDirections": 37,
+        "narrow": 7,
+        "oneWide": 3,
+        "components": [
+          44
+        ],
+        "articulations": 0,
+        "meanMoves": 6.505,
+        "zeroSamples": 1,
+        "samples": 200
+      },
+      "start": {
+        "cells": 38,
+        "edges": 47,
+        "potential": 46,
+        "threeHorizontal": 14,
+        "threeVertical": 15,
+        "squares": 9,
+        "bothDirections": 19,
+        "narrow": 19,
+        "oneWide": 11,
+        "components": [
+          22,
+          16
+        ],
+        "articulations": 7,
+        "meanMoves": 2.895,
+        "zeroSamples": 15,
+        "samples": 200
+      }
+    },
+    {
+      "id": 16,
+      "name": "段違いの庭",
+      "shape": "段違い分断",
+      "open": {
+        "cells": 68,
+        "edges": 107,
+        "potential": 107,
+        "threeHorizontal": 32,
+        "threeVertical": 46,
+        "squares": 40,
+        "bothDirections": 66,
+        "narrow": 2,
+        "oneWide": 0,
+        "components": [
+          34,
+          34
+        ],
+        "articulations": 0,
+        "meanMoves": 10.845,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 62,
+        "edges": 85,
+        "potential": 85,
+        "threeHorizontal": 20,
+        "threeVertical": 32,
+        "squares": 25,
+        "bothDirections": 30,
+        "narrow": 32,
+        "oneWide": 6,
+        "components": [
+          31,
+          31
+        ],
+        "articulations": 8,
+        "meanMoves": 6.535,
+        "zeroSamples": 0,
+        "samples": 200
+      }
+    },
+    {
+      "id": 17,
+      "name": "ひと筋の連絡路",
+      "shape": "三マスの連絡路",
+      "open": {
+        "cells": 43,
+        "edges": 63,
+        "potential": 63,
+        "threeHorizontal": 29,
+        "threeVertical": 16,
+        "squares": 20,
+        "bothDirections": 26,
+        "narrow": 17,
+        "oneWide": 5,
+        "components": [
+          43
+        ],
+        "articulations": 4,
+        "meanMoves": 5.75,
+        "zeroSamples": 1,
+        "samples": 200
+      },
+      "start": {
+        "cells": 37,
+        "edges": 49,
+        "potential": 47,
+        "threeHorizontal": 19,
+        "threeVertical": 14,
+        "squares": 13,
+        "bothDirections": 20,
+        "narrow": 17,
+        "oneWide": 9,
+        "components": [
+          37
+        ],
+        "articulations": 13,
+        "meanMoves": 3.425,
+        "zeroSamples": 12,
+        "samples": 200
+      }
+    },
+    {
+      "id": 18,
+      "name": "欠けた回廊",
+      "shape": "欠けた回廊",
+      "open": {
+        "cells": 40,
+        "edges": 58,
+        "potential": 58,
+        "threeHorizontal": 12,
+        "threeVertical": 24,
+        "squares": 20,
+        "bothDirections": 32,
+        "narrow": 8,
+        "oneWide": 0,
+        "components": [
+          20,
+          20
+        ],
+        "articulations": 0,
+        "meanMoves": 4.61,
+        "zeroSamples": 4,
+        "samples": 200
+      },
+      "start": {
+        "cells": 34,
+        "edges": 44,
+        "potential": 44,
+        "threeHorizontal": 6,
+        "threeVertical": 16,
+        "squares": 12,
+        "bothDirections": 14,
+        "narrow": 20,
+        "oneWide": 2,
+        "components": [
+          17,
+          17
+        ],
+        "articulations": 6,
+        "meanMoves": 2.54,
+        "zeroSamples": 24,
+        "samples": 200
+      }
+    },
+    {
+      "id": 19,
+      "name": "折れ曲がる果樹園",
+      "shape": "折り返し",
+      "open": {
+        "cells": 46,
+        "edges": 71,
+        "potential": 71,
+        "threeHorizontal": 30,
+        "threeVertical": 21,
+        "squares": 25,
+        "bothDirections": 43,
+        "narrow": 3,
+        "oneWide": 1,
+        "components": [
+          46
+        ],
+        "articulations": 2,
+        "meanMoves": 6.905,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 38,
+        "edges": 45,
+        "potential": 41,
+        "threeHorizontal": 12,
+        "threeVertical": 12,
+        "squares": 9,
+        "bothDirections": 18,
+        "narrow": 20,
+        "oneWide": 10,
+        "components": [
+          9,
+          20,
+          9
+        ],
+        "articulations": 10,
+        "meanMoves": 2.48,
+        "zeroSamples": 23,
+        "samples": 200
+      }
+    },
+    {
+      "id": 20,
+      "name": "石の額縁",
+      "shape": "四つの庭",
+      "open": {
+        "cells": 64,
+        "edges": 95,
+        "potential": 95,
+        "threeHorizontal": 32,
+        "threeVertical": 30,
+        "squares": 34,
+        "bothDirections": 60,
+        "narrow": 4,
+        "oneWide": 0,
+        "components": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "articulations": 0,
+        "meanMoves": 8.38,
+        "zeroSamples": 0,
+        "samples": 200
+      },
+      "start": {
+        "cells": 56,
+        "edges": 68,
+        "potential": 64,
+        "threeHorizontal": 24,
+        "threeVertical": 16,
+        "squares": 12,
+        "bothDirections": 24,
+        "narrow": 32,
+        "oneWide": 16,
+        "components": [
+          14,
+          14,
+          14,
+          14
+        ],
+        "articulations": 0,
+        "meanMoves": 3.415,
+        "zeroSamples": 6,
+        "samples": 200
+      }
+    }
+  ]
+}

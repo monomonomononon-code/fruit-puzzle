@@ -1,0 +1,274 @@
+[
+  {
+    "id": 1,
+    "name": "はじまりの果樹園",
+    "subtitle": "3つそろえて、ひと息つこう。",
+    "goals": [
+      {
+        "key": "fruit0",
+        "count": 15
+      }
+    ],
+    "ice": [],
+    "boxes": [],
+    "blocks": []
+  },
+  {
+    "id": 2,
+    "name": "レモンの小道",
+    "subtitle": "爽やかな実を、少しずつ。",
+    "goals": [
+      {
+        "key": "fruit2",
+        "count": 20
+      }
+    ],
+    "ice": [],
+    "boxes": [],
+    "blocks": []
+  },
+  {
+    "id": 3,
+    "name": "ふた色の収穫",
+    "subtitle": "長くそろえると、いいことが。",
+    "goals": [
+      {
+        "key": "fruit0",
+        "count": 20
+      },
+      {
+        "key": "fruit3",
+        "count": 20
+      }
+    ],
+    "ice": [],
+    "boxes": [],
+    "blocks": []
+  },
+  {
+    "id": 4,
+    "name": "朝霜の庭",
+    "subtitle": "氷のとなりを消してみよう。",
+    "goals": [
+      {
+        "key": "fruit4",
+        "count": 22
+      },
+      {
+        "key": "ice",
+        "count": 4
+      }
+    ],
+    "ice": [
+      18,
+      21,
+      42,
+      45
+    ],
+    "boxes": [],
+    "blocks": []
+  },
+  {
+    "id": 5,
+    "name": "ひんやり果実",
+    "subtitle": "凍った実にも、春が来る。",
+    "goals": [
+      {
+        "key": "fruit1",
+        "count": 25
+      },
+      {
+        "key": "fruit5",
+        "count": 20
+      },
+      {
+        "key": "ice",
+        "count": 8
+      }
+    ],
+    "ice": [
+      10,
+      13,
+      18,
+      21,
+      42,
+      45,
+      50,
+      53
+    ],
+    "boxes": [],
+    "blocks": []
+  },
+  {
+    "id": 6,
+    "name": "届いた木箱",
+    "subtitle": "箱のとなりを2回消そう。",
+    "goals": [
+      {
+        "key": "fruit3",
+        "count": 28
+      },
+      {
+        "key": "box",
+        "count": 4
+      }
+    ],
+    "ice": [],
+    "boxes": [
+      18,
+      21,
+      42,
+      45
+    ],
+    "blocks": []
+  },
+  {
+    "id": 7,
+    "name": "収穫の便り",
+    "subtitle": "たくさんの実が、待っている。",
+    "goals": [
+      {
+        "key": "fruit0",
+        "count": 30
+      },
+      {
+        "key": "fruit2",
+        "count": 25
+      },
+      {
+        "key": "box",
+        "count": 6
+      }
+    ],
+    "ice": [],
+    "boxes": [
+      10,
+      13,
+      26,
+      29,
+      50,
+      53
+    ],
+    "blocks": []
+  },
+  {
+    "id": 8,
+    "name": "石畳の果樹園",
+    "subtitle": "石のまわりに、ひらめきを。",
+    "goals": [
+      {
+        "key": "fruit4",
+        "count": 32
+      },
+      {
+        "key": "fruit5",
+        "count": 28
+      }
+    ],
+    "ice": [],
+    "boxes": [],
+    "blocks": [
+      0,
+      7,
+      27,
+      28,
+      35,
+      36,
+      56,
+      63
+    ]
+  },
+  {
+    "id": 9,
+    "name": "こもれびの迷路",
+    "subtitle": "入り組んだ庭を、ゆっくりと。",
+    "goals": [
+      {
+        "key": "fruit1",
+        "count": 35
+      },
+      {
+        "key": "fruit3",
+        "count": 30
+      },
+      {
+        "key": "ice",
+        "count": 6
+      }
+    ],
+    "ice": [
+      10,
+      13,
+      26,
+      29,
+      50,
+      53
+    ],
+    "boxes": [],
+    "blocks": [
+      0,
+      1,
+      6,
+      7,
+      24,
+      31,
+      32,
+      39,
+      56,
+      57,
+      62,
+      63
+    ]
+  },
+  {
+    "id": 10,
+    "name": "実りの祝祭",
+    "subtitle": "全部の工夫で、大きな収穫を。",
+    "goals": [
+      {
+        "key": "fruit0",
+        "count": 40
+      },
+      {
+        "key": "fruit3",
+        "count": 35
+      },
+      {
+        "key": "ice",
+        "count": 8
+      },
+      {
+        "key": "box",
+        "count": 6
+      }
+    ],
+    "ice": [
+      9,
+      14,
+      18,
+      21,
+      42,
+      45,
+      49,
+      54
+    ],
+    "boxes": [
+      11,
+      12,
+      25,
+      30,
+      51,
+      52
+    ],
+    "blocks": [
+      0,
+      7,
+      27,
+      28,
+      35,
+      36,
+      56,
+      63
+    ]
+  }
+]
