@@ -21,10 +21,10 @@ try {
   page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
   await page.goto('http://localhost:4173/?test=1');
   await page.waitForFunction(() => !!window.__gameTest);
-  assert.equal(await page.locator('.cell').count(), 64);
+  assert.equal(await page.locator('.cell').count(), 40);
   assert.ok((await page.evaluate(() => window.__gameTest.validMoves())).length > 0);
   await page.screenshot({ path: fileURLToPath(new URL('desktop.png', output)), fullPage: true });
-  check('PC起動・64マス・合法手・スクリーンショット');
+  check('PC起動・Lv1の40マス・合法手・スクリーンショット');
 
   const move = await page.evaluate(() => window.__gameTest.validMoves()[0]);
   await page.locator('.cell').nth(move[0]).click();
@@ -49,10 +49,10 @@ try {
   // 虹合成を固定盤面でプレイし、達成・次ステージ・保存をDOM経由で確認。
   await page.evaluate(() => {
     const t = window.__gameTest, state = t.state();
-    state.board[27].special = 'rainbow'; state.board[28].special = 'rainbow';
+    state.board[25].special = 'rainbow'; state.board[26].special = 'rainbow';
     state.progress.fruit0 = 14; t.inject(state.board, state.progress);
   });
-  await page.locator('.cell').nth(27).click(); await page.locator('.cell').nth(28).click();
+  await page.locator('.cell').nth(25).click(); await page.locator('.cell').nth(26).click();
   await page.waitForFunction(() => !window.__gameTest.busy);
   assert.match(await page.locator('#modal-title').textContent(), /収穫/);
   assert.ok((await page.evaluate(() => window.__gameTest.saved.cleared)).includes(1));
@@ -61,7 +61,7 @@ try {
   await page.reload(); await page.waitForFunction(() => !!window.__gameTest);
   assert.match(await page.locator('#level-tag').textContent(), /02/);
   await page.locator('#levels').click();
-  assert.equal(await page.locator('.level-choice').count(), 10);
+  assert.equal(await page.locator('.level-choice').count(), 20);
   assert.ok(await page.locator('[data-level="3"]').isDisabled());
   await page.locator('[data-level="1"]').click();
   assert.match(await page.locator('#level-tag').textContent(), /01/);
@@ -80,9 +80,9 @@ try {
   check('指定5種類の特殊合成がブラウザで完了し、描画・目標が一致');
 
   await page.evaluate(() => window.__gameTest.start(10));
-  assert.equal(await page.locator('.cell.ice').count(), 8);
-  assert.equal(await page.locator('.cell.box').count(), 6);
-  assert.equal(await page.locator('.cell.blocked').count(), 8);
+  assert.equal(await page.locator('.cell.ice').count(), 4);
+  assert.equal(await page.locator('.cell.box').count(), 4);
+  assert.equal(await page.locator('.cell.blocked').count(), 2);
   await page.screenshot({ path: fileURLToPath(new URL('level10-desktop.png', output)), fullPage: true });
   await page.locator('#reset').click(); await page.locator('#confirm-action').click();
   assert.ok(await page.evaluate(() => Object.values(window.__gameTest.game.progress).every(n => n === 0)));

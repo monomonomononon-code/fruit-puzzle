@@ -1,11 +1,16 @@
 {
   "name": "fruitful-match",
-  "version": "0.1.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test tests/engine.test.mjs"
+    "test": "node --test tests/engine.test.mjs tests/board.test.mjs tests/items.test.mjs tests/flow.test.mjs tests/flight.test.mjs tests/stock.test.mjs",
+    "test:stock-browser": "node scripts/stock-browser-test.mjs",
+    "test:audio-browser": "node scripts/audio-browser-test.mjs",
+    "simulate:stock": "node scripts/simulate-stock.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

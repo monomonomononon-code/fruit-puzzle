@@ -1,10 +1,83 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Game, findMatches, canSwap, validMoves, seeded, snapshot, movable, row, col } from '../src/engine.js';
+import { Game, findMatches, canSwap, validMoves, seeded, snapshot, movable, occupied, row, col } from '../src/engine.js';
 import { LEVELS } from '../src/levels.js';
+import { openEdge, active, withTopology, edgeKey } from '../src/topology.js';
 import { cleanSave } from '../src/storage.js';
+import { readFileSync } from 'node:fs';
+import { mappedStage, validateLayout } from '../src/level-layout.js';
 
 const create = (level = LEVELS[0], seed = 42) => new Game(level, seeded(seed));
+test('序盤10面のID・名称を保ち、要求どおり可変盤面に再調整', () => {
+  const previous=JSON.parse(readFileSync(new URL('./fixtures/legacy-levels.json',import.meta.url),'utf8'));
+  assert.deepEqual(LEVELS.slice(0,10).map(l=>[l.id,l.name]),previous.map(l=>[l.id,l.name]));
+  assert.ok(LEVELS[0].width*LEVELS[0].height<99);
+  assert.ok(LEVELS[1].voids.length>0);
+  assert.ok(LEVELS.some(l=>l.width===11&&l.height===9));
+  assert.ok(LEVELS.slice(10).some(l=>l.width*l.height<99));
+});
+test('旧Lv10クリア済みの保存は記録と設定を保ってLv11を開放', () => {
+  const old = { version: 1, highest: 10, cleared: Array.from({ length: 10 }, (_, i) => i + 1), settings: { sound: true, reduced: true } };
+  const migrated = cleanSave(old, LEVELS.length);
+  assert.equal(migrated.highest, 11); assert.deepEqual(migrated.cleared, old.cleared); assert.deepEqual(migrated.settings, old.settings);
+  assert.equal(cleanSave({ ...old, cleared: [1, 2, 3] }, LEVELS.length).highest, 10);
+});
+test('文字マップは障害物を正しく変換し、構造上の開放経路がある', () => {
+  for (const level of LEVELS.slice(10)) {
+    const info = validateLayout(level);
+    assert.equal(info.cells + level.blocks.length + level.voids.length, level.width * level.height);
+    assert.equal(info.openingLayers.flat().length, level.ice.length + level.boxes.length);
+    for (const [key, char] of [['blocks', '#'], ['ice', 'i'], ['boxes', 'b'], ['voids', '_']]) assert.deepEqual(level[key], [...level.layout.join('')].flatMap((c, i) => c === char ? [i] : []));
+  }
+  assert.equal(validateLayout(LEVELS[11]).components, 2);
+  assert.equal(validateLayout(LEVELS[19]).components, 4);
+});
+test('不正マップ・重複・不可能な目標・孤立セル・閉鎖障害物を拒否', () => {
+  assert.throws(() => mappedStage(99, '', '', '', [{ key: 'fruit0', count: 3 }], ['............']), /11列/ );
+  assert.throws(() => mappedStage(99, '', '', '', [{ key: 'fruit0', count: 3 }], Array(8).fill('########')), /プレイできる/);
+  assert.throws(() => validateLayout({ ...LEVELS[10], boxes: [...LEVELS[10].boxes, LEVELS[10].ice[0]] }), /重複/);
+  assert.throws(() => validateLayout({ ...LEVELS[10], goals: [{ key: 'ice', count: 99 }] }), /配置数/);
+  assert.throws(() => mappedStage(99, '', '', '', [{ key: 'fruit0', count: 3 }], ['.#######', '########', '........', '........', '........', '........', '........', '........']), /孤立/);
+  assert.throws(() => mappedStage(99, '', '', '', [{ key: 'box', count: 1 }], ['...##bbb', '...##bbb', '...##bbb', '...#####', '...#####', '...#####', '...#####', '...#####']), /足場/);
+  assert.throws(() => mappedStage(99, '', '', '', [{ key: 'box', count: 1 }], ['...#####', '...#####', '...#####', '##..bbb#', '###bbbb#', '###bbbb#', '########', '########']), /開けない/);
+});
+test('追加盤面の手詰まりを救済し、障害物・進捗を保持', () => {
+  for (const level of LEVELS.slice(10)) {
+    const g = create(level);
+    g.board.forEach((c, i) => { if (movable(c)) c.fruit = (row(i, g.board) * 2 + col(i, g.board)) % 6; });
+    assert.equal(validMoves(g.board).length, 0);
+    const before = snapshot(g.board), progress = { ...g.progress };
+    assert.notEqual(g.ensurePlayable(), null);
+    assert.ok(validMoves(g.board).length); assert.equal(findMatches(g.board).length, 0);
+    assert.deepEqual(g.progress, progress);
+    before.forEach((c, i) => { if (c.cover || c.block) assert.deepEqual(g.board[i], c); });
+  }
+});
+test('全盤面の重力経路は空間・壁・固定障害物を越えず、穴を残さない', () => {
+  for (const level of LEVELS) {
+    const g=create(level), before=snapshot(g.board);
+    g.board.forEach((c,i)=>{if(movable(c)&&i%3===0)c.fruit=null;});
+    const event=g.gravity();
+    for(const m of event.moves) for(let n=1;n<m.path.length;n++) {
+      const a=m.path[n-1],b=m.path[n];
+      assert.ok(openEdge(before,a,b)); assert.ok(!before[a].cover&&!before[b].cover);
+      assert.ok(row(b,before)>=row(a,before));
+    }
+    g.board.forEach((c,i)=>{assert.equal(c.fruit===null,!active(c));if(!active(c)||c.cover)assert.deepEqual(c,before[i]);});
+    assert.equal(new Set(g.board.map(c=>c.id)).size,g.board.length);
+  }
+});
+test('追加10レベル×30シード：合法手だけで全目標クリア、救済後も安定', () => {
+  for (const level of LEVELS.slice(10)) for (let seed = 1; seed <= 30; seed++) {
+    const rng = seeded(seed * 491), g = create(level, seed * 101); let turns = 0;
+    while (!g.complete() && turns++ < 1500) {
+      const moves = validMoves(g.board); assert.ok(moves.length, `Lv${level.id} seed${seed}`);
+      const result = g.play(...moves[Math.floor(rng() * moves.length)]);
+      assert.equal(result.valid, true); assert.equal(findMatches(g.board).length, 0);
+    }
+    assert.ok(g.complete(), `Lv${level.id} seed${seed}: ${JSON.stringify(g.progress)}`);
+  }
+});
 const board = () => Array.from({ length: 64 }, (_, i) => ({ id: i + 1, fruit: (row(i) * 2 + col(i)) % 6, special: null, block: false, cover: 0, coverType: null }));
 function fixture(indices, special = null) {
   const g = create(); g.board = board();
@@ -12,13 +85,13 @@ function fixture(indices, special = null) {
   for (const i of indices) { g.board[i].fruit = 0; g.board[i].special = special; }
   return g;
 }
-test('10レベルのデータ：ID・障害物・達成可能な要求数', () => {
-  assert.equal(LEVELS.length, 10);
+test('20レベルのデータ：ID・障害物・達成可能な要求数', () => {
+  assert.equal(LEVELS.length, 20);
   for (const [i, l] of LEVELS.entries()) {
     assert.equal(l.id, i + 1);
     const obstacles = [...l.ice, ...l.boxes, ...l.blocks];
     assert.equal(new Set(obstacles).size, obstacles.length);
-    assert.ok(obstacles.every(n => Number.isInteger(n) && n >= 0 && n < 64));
+    assert.ok(obstacles.every(n => Number.isInteger(n) && n >= 0 && n < l.width*l.height));
     for (const goal of l.goals) {
       assert.ok(goal.count > 0);
       if (goal.key === 'ice') assert.ok(goal.count <= l.ice.length);
@@ -26,12 +99,12 @@ test('10レベルのデータ：ID・障害物・達成可能な要求数', () =
     }
   }
 });
-test('10レベル×30シード：初期マッチなし・合法手あり・6種類のみ', () => {
+test('20レベル×30シード：初期マッチなし・合法手あり・6種類のみ', () => {
   for (const l of LEVELS) for (let seed = 1; seed <= 30; seed++) {
     const g = create(l, seed);
     assert.equal(findMatches(g.board).length, 0);
     assert.ok(validMoves(g.board).length > 0);
-    assert.ok(g.board.every(c => c.block ? c.fruit === null : c.fruit >= 0 && c.fruit <= 5));
+    assert.ok(g.board.every(c => !active(c) ? c.fruit === null : c.fruit >= 0 && c.fruit <= 5));
   }
 });
 test('無効交換は盤面と収集数を変更しない', () => {
@@ -76,9 +149,9 @@ test('合法な交換から4個特殊を交換先に生成する', () => {
   const first = result.events.find(e => e.type === 'clear');
   assert.equal(first.board[26].special, 'cross'); assert.ok(first.created.includes(26));
 });
-test('単独特殊：十字5セル・横8セル・縦8セル', () => {
+test('単独特殊：おとどけ1果物・横8セル・縦8セル', () => {
   const g = create(); g.board = board();
-  assert.deepEqual(new Set(g.effect(27, 'cross')), new Set([27, 19, 35, 26, 28]));
+  const flight=g.effect(27,'cross');assert.equal(flight.length,2);assert.equal(flight[0],27);assert.ok(Number.isInteger(g.board[flight[1]].fruit));
   assert.equal(g.effect(27, 'horizontal').length, 8);
   assert.ok(g.effect(27, 'vertical').every(i => col(i) === 3));
 });
@@ -94,7 +167,7 @@ for (const [aType, bType, minimum, label] of [
     assert.equal(result.valid, true); assert.equal(first.label, label);
     assert.ok(first.removed.length >= minimum, `${first.removed.length} < ${minimum}`);
     assert.equal(new Set(first.removed).size, first.removed.length);
-    assert.equal(Object.entries(first.progress).filter(([k]) => k.startsWith('fruit')).reduce((s, [, n]) => s + n, 0), first.removed.length);
+    assert.equal(Object.entries(first.progress).filter(([k]) => k.startsWith('fruit')).reduce((s, [, n]) => s + n, 0), first.removed.filter(i => !first.before[i].special).length);
   });
 }
 test('虹を通常果物と交換：相手の種類だけ全消去', () => {
@@ -163,7 +236,7 @@ test('手詰まりを再現し、自動再配置で進捗・障害物を保持',
   assert.notEqual(g.ensurePlayable(), null); assert.ok(validMoves(g.board).length); assert.equal(findMatches(g.board).length, 0);
   assert.deepEqual(g.progress, progress);
   const h = create(LEVELS[9]), original = snapshot(h.board); h.reshuffle();
-  for (let i = 0; i < 64; i++) if (original[i].cover || original[i].block) assert.deepEqual(h.board[i], original[i]);
+  for (let i = 0; i < h.board.length; i++) if (original[i].cover || !active(original[i])) assert.deepEqual(h.board[i], original[i]);
 });
 test('再配置が失敗し続けても虹を付与して救済', () => {
   const g = create(); g.board = board(); g.rng = () => 0;
@@ -184,21 +257,21 @@ test('全目標を満たしたときのみクリア', () => {
   for (const goal of g.level.goals) g.progress[goal.key] = goal.count;
   assert.equal(g.complete(), true); g.progress.box--; assert.equal(g.complete(), false);
 });
-test('10レベル×3シードを合法手のみで実際にクリアできる', () => {
+test('20レベル×3シードを合法手のみで実際にクリアできる', () => {
   for (const level of LEVELS) for (let seed = 1; seed <= 3; seed++) {
     const rng = seeded(seed * 71), g = create(level, seed); let turns = 0;
     while (!g.complete() && turns++ < 1000) {
       const moves = validMoves(g.board); assert.ok(moves.length, `Lv${level.id} 手詰まり`);
       const result = g.play(...moves[Math.floor(rng() * moves.length)]);
       assert.equal(result.valid, true); assert.equal(findMatches(g.board).length, 0);
-      assert.ok(g.board.every(c => c.block ? c.fruit === null : c.fruit !== null));
-      assert.equal(new Set(g.board.map(c => c.id)).size, 64);
+      assert.ok(g.board.every(c => !active(c) ? c.fruit === null : occupied(c)));
+      assert.equal(new Set(g.board.map(c => c.id)).size, g.board.length);
     }
     assert.ok(g.complete(), `Lv${level.id}, seed ${seed}: ${JSON.stringify(g.progress)}`);
   }
 });
 test('保存の型・範囲・未知バージョンを検証', () => {
-  assert.deepEqual(cleanSave(null, 10), { version: 1, highest: 1, cleared: [], settings: { sound: false, reduced: false } });
+  assert.deepEqual(cleanSave(null, 10), { version: 2, highest: 1, cleared: [], stock: { delivery: 1, line: 1, rainbow: 0 }, stageUses: {}, settings: { sound: false, reduced: false } });
   const data = cleanSave({ version: 1, highest: 999, cleared: [1, 1, 4, '3', -1, 11], settings: { sound: 'false', reduced: true } }, 10);
   assert.equal(data.highest, 10); assert.deepEqual(data.cleared, [1, 4]); assert.equal(data.settings.sound, false);
   assert.equal(cleanSave({ version: 50, highest: 9 }, 10).highest, 1);

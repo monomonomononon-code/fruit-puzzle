@@ -17,7 +17,7 @@
 
 ## コマンド
 - 起動：`node scripts/serve.mjs` → http://localhost:4173
-- ロジック検証：`node --test tests/engine.test.mjs`
+- ロジック検証：`node --test tests/engine.test.mjs tests/board.test.mjs tests/items.test.mjs tests/flow.test.mjs tests/flight.test.mjs`
 - ブラウザ検証：`node scripts/browser-test.mjs`（Playwright が必要。README参照）
 - ビルド不要。GitHub Pages はルートの index.html から相対パスで動かす。
 

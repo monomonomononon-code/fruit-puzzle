@@ -8,6 +8,7 @@
   <title>果実日和 — Fruitful</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ctext y='32' font-size='32'%3E🍎%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./landscape.css">
   <script type="module" src="./src/app.js"></script>
 </head>
 <body>
@@ -18,10 +19,11 @@
   </header>
   <main>
     <section class="intro"><p class="eyebrow">A LITTLE MOMENT OF FRUITFUL JOY</p><h1>そろえて、実る。<span>のんびり、遊ぶ。</span></h1><p>時間も、手数も気にせずに。あなたのペースで収穫を。</p></section>
+    <p class="orientation-tip">横向きにすると、盤面と目標を並べて遊べます。</p>
     <div class="game-layout">
       <aside class="stage-panel">
-        <div class="chapter"><span class="dot"></span> THE ORCHARD <span id="stage-number">01 / 10</span></div>
-        <p id="level-tag" class="level-tag">LEVEL 01</p><h2 id="stage-title"></h2><p id="stage-subtitle" class="muted"></p>
+        <div class="chapter"><span class="dot"></span> THE ORCHARD <span id="stage-number"></span></div>
+        <p id="level-tag" class="level-tag">LEVEL 01</p><h2 id="stage-title"></h2><p id="stage-subtitle" class="muted"></p><p id="shape-label" class="shape-label" hidden></p>
         <section class="goals-section"><div class="section-label"><h3>今回の収穫</h3><span>GOALS</span></div><div id="goals"></div></section>
         <div class="unlimited"><span>∞</span><div>あせらず、じっくり。<small>時間・手数の制限はありません</small></div></div>
         <button id="help" class="text-button">遊び方とアイテム <span>↗</span></button>
@@ -29,10 +31,10 @@
       <section class="play-panel" aria-label="ゲーム">
         <div class="board-toolbar"><span id="board-label">のんびり収穫中</span><span id="chain" aria-live="polite">READY TO PICK</span></div>
         <div class="board-shell"><div id="board" role="group" aria-label="8行8列の果物パズル"></div><div id="effects" aria-hidden="true"></div><div id="celebration" aria-hidden="true"></div></div>
-        <div class="board-footer"><span id="status" role="status">となりの果物を入れ替えて、3つそろえよう</span><div><button id="hint" class="small-button">✧ ヒント</button><button id="reset" class="small-button" aria-label="このレベルをリセット">↻ <span>やり直す</span></button></div></div>
+        <div class="board-footer"><span id="status" role="status">となりの果物を入れ替えて、3つそろえよう</span><div><button id="stock" class="small-button">持ちもの 2/6</button><button id="hint" class="small-button">✧ ヒント</button><button id="reset" class="small-button" aria-label="このレベルをリセット">↻ <span>やり直す</span></button></div></div>
       </section>
     </div>
-    <section class="special-guide" aria-label="特殊アイテムの紹介"><div class="guide-heading"><span class="eyebrow">A SWEETER MATCH</span><h3>たくさんそろえると、<br>ちょっと特別。</h3></div><div class="guide-item"><span class="sample cross">＋</span><div><b>4つで、十字</b><p>となりの果実も一緒に</p></div></div><div class="guide-item"><span class="sample line">↔</span><div><b>5つで、ライン</b><p>一列まるごと、すっきり</p></div></div><div class="guide-item"><span class="sample rainbow">✦</span><div><b>6つ以上で、虹</b><p>同じ果実をまとめて収穫</p></div></div></section>
+    <section class="special-guide" aria-label="特殊アイテムの紹介"><div class="guide-heading"><span class="eyebrow">A SWEETER MATCH</span><h3>たくさんそろえると、<br>ちょっと特別。</h3></div><div class="guide-item"><span class="sample cross">➤</span><div><b>4つで、おとどけ</b><p>飛んでひとつ、次の一手へ</p></div></div><div class="guide-item"><span class="sample line">✥</span><div><b>5つで、ライン</b><p>交換した方向を一列収穫</p></div></div><div class="guide-item"><span class="sample rainbow">✦</span><div><b>6つ以上で、虹</b><p>同じ果実をまとめて収穫</p></div></div></section>
   </main>
   <footer class="page-footer"><span>FRUITFUL <i>—</i> made for slow moments</span><span>ひとつずつ、いい日になる。</span></footer>
   <dialog id="modal" aria-labelledby="modal-title"><button id="close-modal" class="close-button" aria-label="閉じる">×</button><div id="modal-content"></div></dialog>
