@@ -145,7 +145,7 @@ node scripts/flight-browser-test.mjs
 
 最小完成版は [GitHub Pages](https://monomonomononon-code.github.io/fruit-puzzle/) と [Vercel](https://fruit-puzzle-psi.vercel.app/) で公開済みです。今回の独立アイテム更新はローカル検証までで、公開サイトへの反映は行っていません。配信には index.html、style.css、landscape.css、src/、.nojekyll を含めてください。
 
-設定方法は[GitHub公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を確認しています。Pages上での実配信確認は公開後に行ってください。
+設定方法は[GitHub公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を確認しています。GitHub PagesとVercelの公開URLで、更新版の画面表示、JavaScript、MP3音源の配信を確認済みです。
 
 ## 含めないファイル
 
